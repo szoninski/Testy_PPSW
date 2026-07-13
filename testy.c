@@ -74,16 +74,20 @@ void TestOf_AppendString(void) {
     }
 
 
-    void TestOf_ReplaceCharactersInString(void) {
-        char cOldChar = 't';
-        char cNewChar = 'l';
-        char cNewString[] = "test stringu";
+   void TestOf_ReplaceCharactersInString(void) {
+        char cOldChar = 'o';
+        char cNewChar = 'e';
+        char cNewString[] = "kk7 goj";
+
         printf("ReplaceCharactersInString\n\n");
-        printf("Test 1 -");
-        // Sprawdzenie czy funkcja poprawnie zamienia znak w lancuchu
-        ReplaceCharactersInString(cNewString, cOldChar, cNewChar);
-        if (strcmp(cNewString, "lesl slringu") == 0) printf("OK\n\n"); else printf("Error\n\n");
+
+		printf("Test 1 -");
+        // sprawdzam czy znaki w lancuchu sie poprawnie wymieniaja
+
+		ReplaceCharactersInString(cNewString, cOldChar, cNewChar);
+        if (strcmp(cNewString, "kk7 gej") == 0) printf("OK\n\n"); else printf("Error\n\n");
     }
+
 
     void TestOf_UIntToHexStr(void) {}
     int main() {
