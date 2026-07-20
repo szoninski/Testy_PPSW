@@ -5,4 +5,9 @@ set(CMAKE_C_STANDARD 11)
 
 add_executable(untitled8 testy.c
         lancuchy.h
-        lancuchy.c)
+        lancuchy.c
+        konwersje.c
+        konwersje.h
+
+
+)

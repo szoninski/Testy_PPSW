@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
-
 #include "lancuchy.h"
+#include "konwersje.h"
 void TestOf_CopyString(void) {
     char cString1[] = "KK7 GOJ";
     char cString2[10] = "";
@@ -45,6 +45,8 @@ void TestOf_eCompareString(void) {
     if (strcmp(cString1, cDifferentString) != 0 && eCompareString(cString1, cDifferentString) == DIFFERENT)
         printf("OK\n\n"); else printf("Error\n\n");
 }
+
+
 void TestOf_AppendString(void) {
 
     char cDestinationStr1[] = "test ";
@@ -52,29 +54,34 @@ void TestOf_AppendString(void) {
     char cDestinationStr3[] = "test";
     char cSourceStr1[] = "dzialania";
     char cSourceStr2[] = "";
-    char cSourceStr3[] = "dzialania";
+    char cSourceStr3[] = "dzialania ";
 
-    printf("AppendString\n\n ");
+    printf("AppendString\n\n");
 
     printf("Test 1 - ");
         // Sprawdzenie czy funkcja poprawnie dodaje niepusty lancuch do niepustego lancucha
     AppendString(cSourceStr1, cDestinationStr1);
 
     if (strcmp(cDestinationStr1, "test dzialania") == 0) printf("OK\n"); else printf("Error\n");
+
+
+
     printf("Test 2 - ");
         // Sprawdzenie czy funkcja poprawnie dodaje pusty lancuch do niepustego lancucha
 
     AppendString(cSourceStr2,cDestinationStr3);
 
     if (strcmp(cDestinationStr3, "test") == 0) printf("OK\n"); else printf("Error\n");
+
     printf("Test 3 - ");
-        // Sprawdzenie czy funkcja poprawnie dodaje niepusty lancuch do pustego lancucha
-        AppendString(cSourceStr3, cDestinationStr2);
-        if (strcmp(cDestinationStr2, "dzialania") == 0) printf("OK\n\n"); else printf("Error\n\n");
+    // Sprawdzenie czy funkcja poprawnie dodaje pusty lancuch do pustego lancucha
+    AppendString(cSourceStr2, cDestinationStr2);
+    if (strcmp(cDestinationStr2, "") == 0) printf("OK\n\n"); else printf("Error\n\n");
+
     }
 
 
-   void TestOf_ReplaceCharactersInString(void) {
+void TestOf_ReplaceCharactersInString(void) {
         char cOldChar = 'o';
         char cNewChar = 'e';
         char cNewString[] = "kk7 goj";
@@ -88,12 +95,45 @@ void TestOf_AppendString(void) {
         if (strcmp(cNewString, "kk7 gej") == 0) printf("OK\n\n"); else printf("Error\n\n");
     }
 
+//testy konwersji
 
-    void TestOf_UIntToHexStr(void) {}
-    int main() {
+
+void TestOf_UIntToHexStr(void) {
+    char cString[15];
+    printf("UIntToHexStr\n\n");
+    printf("Test 1 -");
+    UIntToHexStr(0x000F,cString);
+    if (strcmp(cString, "0x000F") == 0) printf("OK\n\n"); else printf("Error\n");
+    }
+
+void TestOf_AppendUIntToString(void) {
+    char cDestinationStr1[10] = "Test";
+    char cDestinationStr2[10] = "";
+    unsigned int uiValue = 1;
+    printf("AppendUIntToString\n\n");
+    printf("Test 1 -");
+
+    // sprawdzenie czy funkcja poprawnie dodaje liczby do pustego lancucha znakowaego
+    AppendUIntToString(uiValue, cDestinationStr1);
+    if (strcmp(cDestinationStr1, "Test0x0001") == 0) printf("OK\n"); else printf("Error\n");
+
+    //sprawdzenie czy funckja dodaje liczbe do niepustego lancucha
+    printf("Test 2 -");
+    AppendUIntToString(uiValue, cDestinationStr2);
+    if (strcmp(cDestinationStr2, "0x0001") == 0) printf("OK\n"); else printf("Error\n");
+}
+
+int main() {
+        printf("lancuchy test \n\n");
         TestOf_CopyString();
         TestOf_eCompareString();
-        TestOf_UIntToHexStr(); //dorobić test ui to hex
         TestOf_ReplaceCharactersInString();
+        TestOf_AppendString();
+
+
+        printf("konwersje test \n\n");
+        TestOf_UIntToHexStr();
+        TestOf_AppendUIntToString();
+
         return 0;
     }
