@@ -9,6 +9,7 @@ add_executable(untitled8 testy.c
         konwersje.c
         konwersje.h
         dekodowanie.h
+        dekodowanie.c
 
 
 )
