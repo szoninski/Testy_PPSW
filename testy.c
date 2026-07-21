@@ -3,6 +3,7 @@
 
 #include "lancuchy.h"
 #include "konwersje.h"
+#include "dekodowanie.h"
 void TestOf_CopyString(void) {
     char cString1[] = "KK7 GOJ";
     char cString2[10] = "";

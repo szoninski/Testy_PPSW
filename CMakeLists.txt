@@ -8,6 +8,7 @@ add_executable(untitled8 testy.c
         lancuchy.c
         konwersje.c
         konwersje.h
+        dekodowanie.h
 
 
 )
