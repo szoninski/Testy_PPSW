@@ -123,6 +123,19 @@ void TestOf_AppendUIntToString(void) {
     if (strcmp(cDestinationStr2, "0x0001") == 0) printf("OK\n"); else printf("Error\n");
 }
 
+void TestOf_eHexStringToUInt(void) {
+    char cstring_good[] = "0x000A";
+    char cstring_bad_1[] = "test";
+    char cstring_bad_2[] = "0x";
+    char cstring_bad_3[] = "0x12345";
+    unsigned int uiResult;
+    printf("eHexStringToUInt\n\n");
+    printf("Test 1 - ");
+    //sprawdza czy podany poprawnie lancuch dziala zgodnie z zaloezniami funkcji
+    if ((eHexStringToUInt(cstring_good,&uiResult) == OK) && uiResult == 65000) printf("OK\n\n"); else printf("Error\n\n");
+}
+
+
 int main() {
         printf("lancuchy test \n\n");
         TestOf_CopyString();
@@ -133,6 +146,7 @@ int main() {
 
         printf("konwersje test \n\n");
         TestOf_UIntToHexStr();
+        TestOf_eHexStringToUInt();
         TestOf_AppendUIntToString();
 
         return 0;
