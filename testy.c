@@ -132,7 +132,17 @@ void TestOf_eHexStringToUInt(void) {
     printf("eHexStringToUInt\n\n");
     printf("Test 1 - ");
     //sprawdza czy podany poprawnie lancuch dziala zgodnie z zaloezniami funkcji
-    if ((eHexStringToUInt(cstring_good,&uiResult) == OK) && uiResult == 65000) printf("OK\n\n"); else printf("Error\n\n");
+    if ((eHexStringToUInt(cstring_good,&uiResult) == OK) && uiResult == 10) printf("OK\n"); else printf("Error\n\n");
+
+    printf("Test 2 - ");
+    //sprawdza czy funckaj rozpoznaje bledny zapis lancucha
+    if ((eHexStringToUInt(cstring_bad_1,&uiResult) == ERROR)) printf("OK\n"); else printf("Error\n\n");
+    //sprawdza czy funkcja zgodnie z zalozeniem odrzuci zbyt krotki lacouch
+    printf("Test 3 - ");
+    if ((eHexStringToUInt(cstring_bad_2,&uiResult) == ERROR)) printf("OK\n"); else printf("Error\n\n");
+    //sprawdza czy funckaj zgodnie z zalozeniem odrzuci zbyt dlugi lancuch
+    printf("Test 4 - ");
+    if ((eHexStringToUInt(cstring_bad_3,&uiResult) == ERROR)) printf("OK\n"); else printf("Error\n\n");
 }
 
 
